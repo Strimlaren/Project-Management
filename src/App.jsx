@@ -1,10 +1,18 @@
-import "./App.css";
+import "./App.module.css";
+import Menu from "./components/Menu/Menu";
+import WorkArea from "./components/WorkArea/WorkArea";
+import DefaultArea from "./components/DefaultArea/DefaultArea";
+import { useState } from "react";
 
 function App() {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  function handleSelectProject() {}
+
   return (
     <main>
-      <p>Your Projects</p>
-      <p>Selected Project</p>
+      <Menu />
+      {!selectedProject ? <DefaultArea /> : <WorkArea />}
     </main>
   );
 }
