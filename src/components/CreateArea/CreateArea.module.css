@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 70%;
+  padding: 1rem 0 0 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+textarea {
+  position: relative;
+  width: 100%;
+  min-height: 100px;
+  color: var(--primary);
+  padding: 0.5rem;
+  resize: none;
+  background-color: rgb(204, 204, 204);
+  border: 0;
+  border-radius: 4px;
+  border-bottom: 2px solid gray;
+  transition: border 0.4s ease;
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid var(--primary);
+  }
+}
+
+input {
+  padding: 0.5rem;
+  background-color: rgb(204, 204, 204);
+  border: 0;
+  border-radius: 4px;
+  border-bottom: 2px solid gray;
+  transition: border 0.4s ease;
+  position: relative;
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid var(--primary);
+  }
+}
+
+h6 {
+  font-size: 1.4rem;
+  color: var(--tetriary);
+}
+
+.buttons_div {
+  display: flex;
+  margin-top: 1.5rem;
+  margin: 1.5rem 0 0 auto;
+}
+
+.cancel_button {
+  margin-right: 0.5rem;
+  background-color: transparent;
+  color: var(--primary);
+}
+
+.save_button {
+  background-color: rgb(0, 162, 30);
+  color: var(--primary);
+}
+
+.counter {
+  position: absolute;
+  right: 5px;
+  bottom: -14px;
+}

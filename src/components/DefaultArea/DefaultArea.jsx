@@ -1,13 +1,16 @@
 import "./DefaultArea.module.css";
 import logo from "/logo.png";
+import CreateArea from "../CreateArea/CreateArea";
 
-export default function DefaultArea() {
+export default function DefaultArea({ onSelect }) {
   return (
     <section>
       <img src={logo} alt="Some random image." />
       <h1>No Project Selected</h1>
       <p>Select a project or get started with a new one.</p>
-      <button>Create new project</button>
+      <button onClick={() => onSelect(<CreateArea onSelect={onSelect} />)}>
+        Create new project
+      </button>
     </section>
   );
 }
