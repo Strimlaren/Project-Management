@@ -17,10 +17,11 @@ main {
   display: flex;
   width: 70%;
   min-height: 35rem;
+  width: 650px;
 }
 
 section {
-  max-width: 70%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
