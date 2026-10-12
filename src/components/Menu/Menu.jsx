@@ -3,8 +3,9 @@ import CreateArea from "../CreateArea/CreateArea";
 import WorkArea from "../WorkArea/WorkArea.jsx";
 import { database, add, remove } from "../../utils/database.js";
 
-export default function Menu({ onSelect }) {
+export default function Menu({ onSelect, selectedTitle, title }) {
   function handleSelectProject(project) {
+    selectedTitle(project.title);
     onSelect(<WorkArea project={project} />);
   }
 
@@ -17,7 +18,7 @@ export default function Menu({ onSelect }) {
       </button>
       {database.map((project, index) => (
         <p
-          className={css.menuLink}
+          className={`${css.menuLink} ${title === project.title ? css.active : ""}`}
           key={index}
           onClick={() => handleSelectProject(project)}
         >

@@ -31,9 +31,14 @@ hr {
   text-transform: uppercase;
   padding: 6px;
   margin-bottom: 0.2rem;
+  transition: 0.4s ease;
 
   &:hover {
     background-color: #5555550f;
     cursor: pointer;
+  }
+
+  &.active {
+    background-color: #5555550f;
   }
 }

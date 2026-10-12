@@ -8,14 +8,23 @@ function App() {
   const [selectedProject, setSelectedProject] = useState(
     <DefaultArea onSelect={handleSelectProject} />,
   );
+  const [title, setTitle] = useState("");
 
   function handleSelectProject(project) {
     setSelectedProject(project);
   }
 
+  function handleTitle(newTitle) {
+    setTitle(newTitle);
+  }
+
   return (
     <main>
-      <Menu onSelect={handleSelectProject} />
+      <Menu
+        onSelect={handleSelectProject}
+        selectedTitle={handleTitle}
+        title={title}
+      />
       {selectedProject}
     </main>
   );
