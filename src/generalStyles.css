@@ -2,6 +2,7 @@
   --primary: rgba(0, 0, 0, 0.893);
   --secondary: rgb(188, 187, 187);
   --tetriary: rgb(62, 62, 62);
+  --weak: rgba(62, 62, 62, 0.5);
 }
 
 * {

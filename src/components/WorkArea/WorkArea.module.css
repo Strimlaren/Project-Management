@@ -1,0 +1,64 @@
+section {
+  padding: 0;
+  align-items: start;
+  justify-content: start;
+
+  & h1 {
+    margin-bottom: 0;
+  }
+
+  & .date {
+    color: var(--weak);
+    margin: 0;
+  }
+
+  & h2 {
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  & .description {
+    margin: 1rem 0;
+    min-height: 50px;
+  }
+}
+
+.taskInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: end;
+
+  & button {
+    height: fit-content;
+    background-color: rgba(255, 0, 0, 0.53);
+    margin-bottom: 0;
+    transition: 0.4s ease;
+  }
+
+  & button:hover {
+    background-color: rgba(255, 0, 0, 0.788);
+    box-shadow: none;
+  }
+}
+
+.hr {
+  border: 0;
+  border-bottom: 1px solid var(--weak);
+  margin: 0;
+  width: 100%;
+}
+
+.taskInsertion {
+  & button {
+  }
+
+  & input {
+    width: 100%;
+  }
+}
