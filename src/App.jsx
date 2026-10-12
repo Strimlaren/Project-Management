@@ -1,5 +1,4 @@
 import "./App.module.css";
-import projects from "./utils/database.json";
 import Menu from "./components/Menu/Menu";
 import WorkArea from "./components/WorkArea/WorkArea";
 import DefaultArea from "./components/DefaultArea/DefaultArea";

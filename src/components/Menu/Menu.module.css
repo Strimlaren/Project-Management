@@ -14,10 +14,26 @@ aside {
     margin-top: 0.5rem;
     font-size: 1.8rem;
   }
+
+  & button {
+    margin-bottom: 1rem;
+  }
 }
 
 hr {
   border: none;
   border-top: 1px solid #555;
   margin: 0 1rem 1rem 1rem;
+}
+
+.menuLink {
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 6px;
+  margin-bottom: 0.2rem;
+
+  &:hover {
+    background-color: #5555550f;
+    cursor: pointer;
+  }
 }
