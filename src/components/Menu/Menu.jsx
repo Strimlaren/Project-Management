@@ -1,7 +1,7 @@
 import css from "./Menu.module.css";
 import CreateArea from "../CreateArea/CreateArea";
 import WorkArea from "../WorkArea/WorkArea.jsx";
-import { database, add, remove } from "../../utils/database.js";
+import { database } from "../../utils/database.js";
 
 export default function Menu({ onSelect, selectedTitle, title }) {
   function handleSelectProject(project) {

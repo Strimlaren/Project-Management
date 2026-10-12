@@ -5,21 +5,21 @@ export let database = [
       "Get stronger in the gym and be able to lift cars well above my head.",
     dueDate: "2027-01-12",
     tasks: [
-      "Benchpress: 100",
-      "Squats 160",
-      "Deadlift 200",
-      "Biceps Curl 30kg",
+      "Benchpress: 100kg",
+      "Squats: 160kg",
+      "Deadlift: 200kg",
+      "Biceps Curl: 30kg",
     ],
   },
   {
     title: "Get Faster",
-    description: "Get fast as fuck so i can beat the Flash in a 100m race.",
+    description: "Get fast as fuck so I can beat the Flash in a 100m race.",
     dueDate: "2027-01-12",
     tasks: [
-      "Running: 0sec",
+      "Running: 10km in 12sec",
       "Swimming: 1km in 1 min",
       "Cycling: 200km in 3min",
-      "Jerking off: Orgasm in 1sec",
+      "Counting to 1,000,000 in 100ms",
     ],
   },
 ];

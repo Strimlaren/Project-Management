@@ -14,6 +14,7 @@ function App() {
     setSelectedProject(project);
   }
 
+  // Helps to show selected indicator on menu items
   function handleTitle(newTitle) {
     setTitle(newTitle);
   }
