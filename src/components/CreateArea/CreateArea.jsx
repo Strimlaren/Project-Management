@@ -1,13 +1,16 @@
 import DefaultArea from "../DefaultArea/DefaultArea";
 import css from "./CreateArea.module.css";
 import { useState, useRef } from "react";
+import { database, add, remove } from "../../utils/database";
 
 export default function CreateArea({ onSelect }) {
   const [textArea, setTextArea] = useState(0);
   const [inputArea, setInputArea] = useState(0);
   const [dateArea, setDateArea] = useState(null);
 
-  const dateInput = useRef(null);
+  const titleRef = useRef("");
+  const descriptionRef = useRef("");
+  const dateRef = useRef(null);
   const saveButton = useRef(null);
 
   let validEntries = false;
@@ -22,6 +25,12 @@ export default function CreateArea({ onSelect }) {
 
   function handleDateArea(event) {
     setDateArea(event.target.value);
+  }
+
+  function handleSave() {
+    const newItem = {
+      title: textArea,
+    };
   }
 
   if (textArea && inputArea && dateArea) {
@@ -53,8 +62,8 @@ export default function CreateArea({ onSelect }) {
         </button>
         <button
           className={`${css.save_button} ${!validEntries && css.disabled}`}
-          ref={saveButton}
           undefined={validEntries}
+          onClick={handleSave}
         >
           {validEntries ? "Save Project" : "Invalid Fields"}
         </button>
