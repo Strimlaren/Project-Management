@@ -1,4 +1,5 @@
 import css from "./WorkArea.module.css";
+import { database as db } from "../../utils/database";
 
 export default function WorkArea({ project }) {
   return (
@@ -21,7 +22,10 @@ export default function WorkArea({ project }) {
       </div>
       <ul>
         {project.tasks.map((task, i) => (
-          <li key={i}>{task}</li>
+          <li key={i}>
+            <p>{task}</p>
+            <button>Clear</button>
+          </li>
         ))}
       </ul>
     </section>

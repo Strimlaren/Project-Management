@@ -14,11 +14,33 @@ section {
 
   & h2 {
     margin: 1rem 0 0.5rem 0;
+    color: var(--tetriary);
   }
 
   & .description {
     margin: 1rem 0;
     min-height: 50px;
+  }
+
+  & ul {
+    margin-top: 1.8rem;
+    background-color: #5555550f;
+    border-radius: 5px;
+    width: 100%;
+    padding: 1rem 0 1rem 5px;
+  }
+
+  & p {
+    margin: 0;
+  }
+
+  & li {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    text-justify: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -55,7 +77,12 @@ section {
 }
 
 .taskInsertion {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+
   & button {
+    width: 100px;
   }
 
   & input {
