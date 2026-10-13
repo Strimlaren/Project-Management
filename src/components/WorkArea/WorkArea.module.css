@@ -27,7 +27,7 @@ section {
     background-color: #5555550f;
     border-radius: 5px;
     width: 100%;
-    padding: 1rem 0 1rem 5px;
+    padding: 1rem 3px 1rem 5px;
   }
 
   & p {
@@ -83,6 +83,7 @@ section {
 
   & button {
     width: 100px;
+    margin-right: 3px;
   }
 
   & input {
