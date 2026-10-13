@@ -24,11 +24,11 @@ export let database = [
   },
 ];
 
-export function add(item) {
+export function addProject(item) {
   database.push(item);
 }
 
-export function remove(title) {
+export function removeProject(title) {
   const newDatabase = database.filter((item) => item.title !== title);
   database = newDatabase;
 }
