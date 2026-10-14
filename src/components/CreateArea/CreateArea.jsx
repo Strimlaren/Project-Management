@@ -8,7 +8,7 @@ import {
   removeTask,
 } from "../../utils/database";
 
-export default function CreateArea({ onSelect }) {
+export default function CreateArea({ onSelect, db }) {
   const [textArea, setTextArea] = useState(0);
   const [inputArea, setInputArea] = useState(0);
   const [dateArea, setDateArea] = useState(null);

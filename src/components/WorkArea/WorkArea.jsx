@@ -1,7 +1,7 @@
 import css from "./WorkArea.module.css";
 import { addTask, removeTask, removeProject } from "../../utils/database";
 
-export default function WorkArea({ project }) {
+export default function WorkArea({ project, db }) {
   return (
     <section>
       <div className={css.titleContainer}>

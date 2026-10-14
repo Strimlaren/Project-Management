@@ -6,11 +6,11 @@ import DefaultArea from "./components/DefaultArea/DefaultArea";
 import { useState } from "react";
 
 function App() {
-  const [selectedProject, setSelectedProject] = useState(
-    <DefaultArea onSelect={handleSelectProject} />,
-  );
-  const [title, setTitle] = useState("");
   const [database, setDatabase] = useState(getProjects());
+  const [title, setTitle] = useState("");
+  const [selectedProject, setSelectedProject] = useState(
+    <DefaultArea onSelect={handleSelectProject} db={database} />,
+  );
 
   function handleSelectProject(project) {
     setSelectedProject(project);

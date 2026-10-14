@@ -5,14 +5,16 @@ import WorkArea from "../WorkArea/WorkArea.jsx";
 export default function Menu({ onSelect, selectedTitle, title, db }) {
   function handleSelectProject(project) {
     selectedTitle(project.title);
-    onSelect(<WorkArea project={project} />);
+    onSelect(<WorkArea project={project} db={db} />);
   }
 
   return (
     <aside>
       <h2>PROJECTS</h2>
       <hr />
-      <button onClick={() => onSelect(<CreateArea onSelect={onSelect} />)}>
+      <button
+        onClick={() => onSelect(<CreateArea onSelect={onSelect} db={db} />)}
+      >
         + Add Project
       </button>
       {db.map((project, index) => (
