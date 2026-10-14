@@ -1,12 +1,8 @@
 import DefaultArea from "../DefaultArea/DefaultArea";
 import css from "./CreateArea.module.css";
+import WorkArea from "../WorkArea/WorkArea";
 import { useState, useRef } from "react";
-import {
-  addProject,
-  removeProject,
-  addTask,
-  removeTask,
-} from "../../utils/database";
+import { addProject } from "../../utils/database";
 
 export default function CreateArea({ onSelect, db, setDB }) {
   const [textArea, setTextArea] = useState(0);
@@ -32,6 +28,18 @@ export default function CreateArea({ onSelect, db, setDB }) {
     setDateArea(event.target.value);
   }
 
+  function handleSave() {
+    const newProject = {
+      title: titleRef.current.value,
+      description: descriptionRef.current.value,
+      dueDate: dateRef.current.value,
+      tasks: [],
+    };
+
+    setDB(addProject(newProject));
+    onSelect(<WorkArea project={newProject} db={db} setDB={setDB} />);
+  }
+
   if (textArea && inputArea && dateArea) {
     validEntries = true;
   }
@@ -40,17 +48,26 @@ export default function CreateArea({ onSelect, db, setDB }) {
     <div className={css.container}>
       <div className={css.item}>
         <h6>TITLE</h6>
-        <input type="text" onChange={handleInputArea} maxLength={35} />
+        <input
+          type="text"
+          ref={titleRef}
+          onChange={handleInputArea}
+          maxLength={35}
+        />
         <p className={css.counter}>{inputArea}/35</p>
       </div>
       <div className={css.item}>
         <h6>DESCRIPTION</h6>
-        <textarea maxLength={150} onChange={handleTextArea} />
+        <textarea
+          ref={descriptionRef}
+          maxLength={150}
+          onChange={handleTextArea}
+        />
         <p className={css.counter}>{textArea}/150</p>
       </div>
       <div className={css.item} onChange={handleDateArea}>
         <h6>DUE DATE</h6>
-        <input type="date" />
+        <input ref={dateRef} type="date" />
       </div>
       <div className={css.buttons_div}>
         <button
@@ -64,6 +81,7 @@ export default function CreateArea({ onSelect, db, setDB }) {
         <button
           className={`${css.save_button} ${!validEntries && css.disabled}`}
           undefined={validEntries}
+          onClick={handleSave}
         >
           {validEntries ? "Save Project" : "Invalid Fields"}
         </button>
