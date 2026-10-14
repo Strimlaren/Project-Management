@@ -1,5 +1,5 @@
 import css from "./WorkArea.module.css";
-import { database as db } from "../../utils/database";
+import { addTask, removeTask, removeProject } from "../../utils/database";
 
 export default function WorkArea({ project }) {
   return (

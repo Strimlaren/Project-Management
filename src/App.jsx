@@ -1,4 +1,5 @@
 import "./App.module.css";
+import { getProjects } from "./utils/database";
 import Menu from "./components/Menu/Menu";
 import WorkArea from "./components/WorkArea/WorkArea";
 import DefaultArea from "./components/DefaultArea/DefaultArea";
@@ -9,6 +10,7 @@ function App() {
     <DefaultArea onSelect={handleSelectProject} />,
   );
   const [title, setTitle] = useState("");
+  const [database, setDatabase] = useState(getProjects());
 
   function handleSelectProject(project) {
     setSelectedProject(project);
@@ -25,6 +27,7 @@ function App() {
         onSelect={handleSelectProject}
         selectedTitle={handleTitle}
         title={title}
+        db={database}
       />
       {selectedProject}
     </main>

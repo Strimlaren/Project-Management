@@ -1,7 +1,12 @@
 import DefaultArea from "../DefaultArea/DefaultArea";
 import css from "./CreateArea.module.css";
 import { useState, useRef } from "react";
-import { database, addProject, removeProject } from "../../utils/database";
+import {
+  addProject,
+  removeProject,
+  addTask,
+  removeTask,
+} from "../../utils/database";
 
 export default function CreateArea({ onSelect }) {
   const [textArea, setTextArea] = useState(0);
@@ -25,12 +30,6 @@ export default function CreateArea({ onSelect }) {
 
   function handleDateArea(event) {
     setDateArea(event.target.value);
-  }
-
-  function handleSave() {
-    const newItem = {
-      title: textArea,
-    };
   }
 
   if (textArea && inputArea && dateArea) {
@@ -63,7 +62,6 @@ export default function CreateArea({ onSelect }) {
         <button
           className={`${css.save_button} ${!validEntries && css.disabled}`}
           undefined={validEntries}
-          onClick={handleSave}
         >
           {validEntries ? "Save Project" : "Invalid Fields"}
         </button>
