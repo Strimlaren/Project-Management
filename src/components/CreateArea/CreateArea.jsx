@@ -52,18 +52,18 @@ export default function CreateArea({ onSelect, db, setDB }) {
           type="text"
           ref={titleRef}
           onChange={handleInputArea}
-          maxLength={35}
+          maxLength={21}
         />
-        <p className={css.counter}>{inputArea}/35</p>
+        <p className={css.counter}>{inputArea}/21</p>
       </div>
       <div className={css.item}>
         <h6>DESCRIPTION</h6>
         <textarea
           ref={descriptionRef}
-          maxLength={150}
+          maxLength={180}
           onChange={handleTextArea}
         />
-        <p className={css.counter}>{textArea}/150</p>
+        <p className={css.counter}>{textArea}/180</p>
       </div>
       <div className={css.item} onChange={handleDateArea}>
         <h6>DUE DATE</h6>
