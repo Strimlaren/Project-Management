@@ -1,4 +1,4 @@
-export let database = [
+const initialDatabase = [
   {
     title: "Get Stronger",
     description:
@@ -24,11 +24,65 @@ export let database = [
   },
 ];
 
-export function addProject(item) {
-  database.push(item);
+const STORAGE_KEY = "projects";
+
+export function getProjects() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+
+  if (saved !== null) {
+    return JSON.parse(saved);
+  }
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(initialDatabase));
+
+  return initialDatabase;
 }
 
+function saveProjects(projects) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
+
+  return projects;
+}
+
+// Add a project
+export function addProject(project) {
+  const projects = getProjects();
+
+  return saveProjects([...projects, project]);
+}
+
+// Remove a project by title
 export function removeProject(title) {
-  const newDatabase = database.filter((item) => item.title !== title);
-  database = newDatabase;
+  const projects = getProjects();
+
+  return saveProjects(projects.filter((project) => project.title !== title));
+}
+
+// Add a task to a project
+export function addTask(title, task) {
+  const projects = getProjects();
+
+  return saveProjects(
+    projects.map((project) =>
+      project.title === title
+        ? { ...project, tasks: [...project.tasks, task] }
+        : project,
+    ),
+  );
+}
+
+// Remove a task from a project
+export function removeTask(title, task) {
+  const projects = getProjects();
+
+  return saveProjects(
+    projects.map((project) =>
+      project.title === title
+        ? {
+            ...project,
+            tasks: project.tasks.filter((t) => t !== task),
+          }
+        : project,
+    ),
+  );
 }
