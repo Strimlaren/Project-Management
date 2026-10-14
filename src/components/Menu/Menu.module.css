@@ -32,6 +32,7 @@ hr {
   padding: 6px;
   margin-bottom: 0.2rem;
   transition: 0.4s ease;
+  color: var(--tetriary);
 
   &:hover {
     background-color: #5555550f;
@@ -40,5 +41,6 @@ hr {
 
   &.active {
     background-color: #5555550f;
+    color: rgb(136, 136, 136);
   }
 }
