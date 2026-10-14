@@ -44,21 +44,18 @@ function saveProjects(projects) {
   return projects;
 }
 
-// Add a project
 export function addProject(project) {
   const projects = getProjects();
 
   return saveProjects([...projects, project]);
 }
 
-// Remove a project by title
 export function removeProject(title) {
   const projects = getProjects();
 
   return saveProjects(projects.filter((project) => project.title !== title));
 }
 
-// Add a task to a project
 export function addTask(title, task) {
   const projects = getProjects();
 
@@ -71,7 +68,6 @@ export function addTask(title, task) {
   );
 }
 
-// Remove a task from a project
 export function removeTask(title, task) {
   const projects = getProjects();
 
