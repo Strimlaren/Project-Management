@@ -9,7 +9,11 @@ function App() {
   const [database, setDatabase] = useState(getProjects());
   const [title, setTitle] = useState("");
   const [selectedProject, setSelectedProject] = useState(
-    <DefaultArea onSelect={handleSelectProject} db={database} />,
+    <DefaultArea
+      onSelect={handleSelectProject}
+      db={database}
+      setDB={setDatabase}
+    />,
   );
 
   function handleSelectProject(project) {
@@ -28,6 +32,7 @@ function App() {
         selectedTitle={handleTitle}
         title={title}
         db={database}
+        setDB={setDatabase}
       />
       {selectedProject}
     </main>

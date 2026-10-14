@@ -2,10 +2,10 @@ import css from "./Menu.module.css";
 import CreateArea from "../CreateArea/CreateArea";
 import WorkArea from "../WorkArea/WorkArea.jsx";
 
-export default function Menu({ onSelect, selectedTitle, title, db }) {
+export default function Menu({ onSelect, selectedTitle, title, db, setDB }) {
   function handleSelectProject(project) {
     selectedTitle(project.title);
-    onSelect(<WorkArea project={project} db={db} />);
+    onSelect(<WorkArea project={project} db={db} setDB={setDB} />);
   }
 
   return (
@@ -13,7 +13,9 @@ export default function Menu({ onSelect, selectedTitle, title, db }) {
       <h2>PROJECTS</h2>
       <hr />
       <button
-        onClick={() => onSelect(<CreateArea onSelect={onSelect} db={db} />)}
+        onClick={() =>
+          onSelect(<CreateArea onSelect={onSelect} db={db} setDB={setDB} />)
+        }
       >
         + Add Project
       </button>

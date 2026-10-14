@@ -8,7 +8,7 @@ import {
   removeTask,
 } from "../../utils/database";
 
-export default function CreateArea({ onSelect, db }) {
+export default function CreateArea({ onSelect, db, setDB }) {
   const [textArea, setTextArea] = useState(0);
   const [inputArea, setInputArea] = useState(0);
   const [dateArea, setDateArea] = useState(null);
@@ -55,7 +55,9 @@ export default function CreateArea({ onSelect, db }) {
       <div className={css.buttons_div}>
         <button
           className={css.cancel_button}
-          onClick={() => onSelect(<DefaultArea onSelect={onSelect} />)}
+          onClick={() =>
+            onSelect(<DefaultArea onSelect={onSelect} db={db} setDB={setDB} />)
+          }
         >
           Cancel
         </button>
