@@ -12,7 +12,6 @@ export default function CreateArea({ onSelect, db, setDB }) {
   const titleRef = useRef("");
   const descriptionRef = useRef("");
   const dateRef = useRef(null);
-  const saveButton = useRef(null);
 
   let validEntries = false;
 
@@ -29,6 +28,8 @@ export default function CreateArea({ onSelect, db, setDB }) {
   }
 
   function handleSave() {
+    if (!validEntries) return;
+
     const newProject = {
       title: titleRef.current.value,
       description: descriptionRef.current.value,
