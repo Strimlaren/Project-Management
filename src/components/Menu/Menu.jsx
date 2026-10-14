@@ -5,7 +5,9 @@ import WorkArea from "../WorkArea/WorkArea.jsx";
 export default function Menu({ onSelect, selectedTitle, title, db, setDB }) {
   function handleSelectProject(project) {
     selectedTitle(project.title);
-    onSelect(<WorkArea project={project} db={db} setDB={setDB} />);
+    onSelect(
+      <WorkArea onSelect={onSelect} project={project} db={db} setDB={setDB} />,
+    );
   }
 
   return (

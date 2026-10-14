@@ -38,7 +38,14 @@ export default function CreateArea({ onSelect, db, setDB }) {
     };
 
     setDB(addProject(newProject));
-    onSelect(<WorkArea project={newProject} db={db} setDB={setDB} />);
+    onSelect(
+      <WorkArea
+        onSelect={onSelect}
+        project={newProject}
+        db={db}
+        setDB={setDB}
+      />,
+    );
   }
 
   if (textArea && inputArea && dateArea) {

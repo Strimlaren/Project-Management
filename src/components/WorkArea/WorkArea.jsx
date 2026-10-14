@@ -1,12 +1,17 @@
 import css from "./WorkArea.module.css";
+import DefaultArea from "../DefaultArea/DefaultArea";
 import { addTask, removeTask, removeProject } from "../../utils/database";
 
-export default function WorkArea({ project, db, setDB }) {
+export default function WorkArea({ onSelect, project, db, setDB }) {
+  function handleRemoveProject() {
+    setDB(removeProject(project.title));
+    onSelect(<DefaultArea onSelect={onSelect} db={db} setDB={setDB} />);
+  }
   return (
     <section>
       <div className={css.titleContainer}>
         <h1>{project.title}</h1>
-        <button>Delete</button>
+        <button onClick={handleRemoveProject}>Delete</button>
       </div>
       <p className={css.date}>Due: {project.dueDate}</p>
       <hr className={css.hr} />
