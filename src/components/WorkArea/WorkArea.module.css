@@ -28,11 +28,11 @@ section.workAreaSection {
   }
 
   & ul {
-    margin-top: 1.8rem;
+    margin-top: 1.1rem;
     background-color: #5555550f;
     border-radius: 5px;
     width: 100%;
-    padding: 1rem 3px 1rem 5px;
+    padding: 3px;
   }
 
   & ul.empty {
@@ -44,12 +44,18 @@ section.workAreaSection {
   }
 
   & li {
+    background-color: #5555550f;
     display: flex;
     justify-content: space-between;
     text-align: center;
     text-justify: center;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
+    padding-left: 2px;
+  }
+
+  & li:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -63,7 +69,7 @@ section.workAreaSection {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  align-items: end;
+  align-items: center;
 
   & button {
     height: fit-content;
