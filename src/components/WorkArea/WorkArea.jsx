@@ -11,6 +11,13 @@ import {
 export default function WorkArea({ onSelect, project, db, setDB }) {
   const addTaskInputRef = useRef("")
   const [data, setData] = useState(project)
+  const [taskEntry, setTaskEntry] = useState(0)
+
+  let validEntry = false
+
+  function handleTaskEntry(event) {
+    setTaskEntry(event.target.value.length)
+  }
 
   function handleRemoveProject() {
     setDB(removeProject(project.title))
@@ -27,6 +34,8 @@ export default function WorkArea({ onSelect, project, db, setDB }) {
     setDB(removeTask(project.title, task))
     setData(getProjects().find((p) => p.title === project.title))
   }
+
+  if (taskEntry < 5) validEntry = true
 
   return (
     <section className={css.workAreaSection}>
@@ -45,8 +54,17 @@ export default function WorkArea({ onSelect, project, db, setDB }) {
           {data.tasks.length > 0 ? `: ${data.tasks.length}` : undefined}
         </h2>
         <div className={css.taskInsertion}>
-          <input ref={addTaskInputRef} type="text" required />
-          <button onClick={handleAddTask} className={css.addTaskButton}>
+          <input
+            onChange={handleTaskEntry}
+            ref={addTaskInputRef}
+            type="text"
+            required
+          />
+          <button
+            disabled={validEntry}
+            onClick={handleAddTask}
+            className={`${css.addTaskButton} ${validEntry ? css.disabled : undefined}`}
+          >
             Add Task
           </button>
         </div>

@@ -105,3 +105,13 @@ section.workAreaSection {
     width: 100%;
   }
 }
+
+.disabled {
+  color: rgb(77, 77, 77);
+  background-color: gray;
+
+  &:hover {
+    cursor: default;
+    box-shadow: none;
+  }
+}
