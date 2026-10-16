@@ -3,46 +3,51 @@ import { getProjects } from "./utils/database"
 import Menu from "./components/Menu/Menu"
 import WorkArea from "./components/WorkArea/WorkArea"
 import DefaultArea from "./components/DefaultArea/DefaultArea"
-import { useState, useEffect } from "react"
+import CreateArea from "./components/CreateArea/CreateArea"
+import { useState } from "react"
 
 function App() {
   const [database, setDatabase] = useState(getProjects())
-  const [title, setTitle] = useState("")
-  const [selectedProject, setSelectedProject] = useState(
-    <DefaultArea
-      onSelect={handleSelectProject}
-      db={database}
-      setDB={setDatabase}
-    />,
-  )
-
-  // useEffect(
-  //   (selectedProject) => {
-  //     console.log("App", selectedProject)
-  //   },
-  //   [title],
-  // )
+  const [selectedProject, setSelectedProject] = useState(null)
+  const [showCreateArea, setShowCreateArea] = useState(false)
 
   function handleSelectProject(project) {
-    console.log("App handle select", project)
     setSelectedProject(project)
+    setShowCreateArea(false)
   }
 
-  // Helps to show selected indicator on menu items
-  function handleTitle(newTitle) {
-    setTitle(newTitle)
+  function handleCreateProject() {
+    setShowCreateArea(true)
+    setSelectedProject(null)
   }
 
   return (
     <main>
       <Menu
         onSelect={handleSelectProject}
-        selectedTitle={handleTitle}
-        title={title}
+        onCreate={handleCreateProject}
+        selectedProject={selectedProject}
         db={database}
         setDB={setDatabase}
       />
-      {selectedProject}
+
+      {showCreateArea ? (
+        <CreateArea
+          onSelect={handleSelectProject}
+          db={database}
+          setDB={setDatabase}
+        />
+      ) : selectedProject ? (
+        <WorkArea
+          key={selectedProject.title}
+          project={selectedProject}
+          onSelect={handleSelectProject}
+          db={database}
+          setDB={setDatabase}
+        />
+      ) : (
+        <DefaultArea handleCreateProject={handleCreateProject} />
+      )}
     </main>
   )
 }

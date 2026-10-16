@@ -1,34 +1,21 @@
 import css from "./Menu.module.css"
-import CreateArea from "../CreateArea/CreateArea"
-import WorkArea from "../WorkArea/WorkArea.jsx"
 
-export default function Menu({ onSelect, selectedTitle, title, db, setDB }) {
-  function changeProject(project) {
-    console.log("Menu", project)
-    selectedTitle(project.title)
-    onSelect(
-      <WorkArea onSelect={onSelect} project={project} db={db} setDB={setDB} />,
-    )
-  }
-
+export default function Menu({ onSelect, onCreate, selectedProject, db }) {
   return (
     <aside>
       <h2>PROJECTS</h2>
       <hr />
-      <button
-        onClick={() =>
-          onSelect(<CreateArea onSelect={onSelect} db={db} setDB={setDB} />)
-        }
-      >
-        + Add Project
-      </button>
-      {db.map((project, index) => (
+
+      <button onClick={onCreate}>+ Add Project</button>
+
+      {db.map((project) => (
         <p
-          className={`${css.menuLink} ${title === project.title ? css.active : ""}`}
-          key={index}
-          onClick={() => changeProject(project)}
+          className={`${css.menuLink} ${
+            selectedProject?.title === project.title ? css.active : ""
+          }`}
+          key={project.title}
+          onClick={() => onSelect(project)}
         >
-          {console.log("menu map", project)}
           {project.title}
         </p>
       ))}
