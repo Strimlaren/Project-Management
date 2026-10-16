@@ -1,6 +1,5 @@
 import DefaultArea from "../DefaultArea/DefaultArea"
 import css from "./CreateArea.module.css"
-import WorkArea from "../WorkArea/WorkArea"
 import { useState, useRef } from "react"
 import { addProject } from "../../utils/database"
 
@@ -38,14 +37,7 @@ export default function CreateArea({ onSelect, db, setDB }) {
     }
 
     setDB(addProject(newProject))
-    onSelect(
-      <WorkArea
-        onSelect={onSelect}
-        project={newProject}
-        db={db}
-        setDB={setDB}
-      />,
-    )
+    onSelect(newProject)
   }
 
   if (textArea && inputArea && dateArea) {
