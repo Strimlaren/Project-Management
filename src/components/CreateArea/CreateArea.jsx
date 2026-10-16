@@ -1,43 +1,43 @@
-import DefaultArea from "../DefaultArea/DefaultArea";
-import css from "./CreateArea.module.css";
-import WorkArea from "../WorkArea/WorkArea";
-import { useState, useRef } from "react";
-import { addProject } from "../../utils/database";
+import DefaultArea from "../DefaultArea/DefaultArea"
+import css from "./CreateArea.module.css"
+import WorkArea from "../WorkArea/WorkArea"
+import { useState, useRef } from "react"
+import { addProject } from "../../utils/database"
 
 export default function CreateArea({ onSelect, db, setDB }) {
-  const [textArea, setTextArea] = useState(0);
-  const [inputArea, setInputArea] = useState(0);
-  const [dateArea, setDateArea] = useState(null);
+  const [textArea, setTextArea] = useState(0)
+  const [inputArea, setInputArea] = useState(0)
+  const [dateArea, setDateArea] = useState(null)
 
-  const titleRef = useRef("");
-  const descriptionRef = useRef("");
-  const dateRef = useRef(null);
+  const titleRef = useRef("")
+  const descriptionRef = useRef("")
+  const dateRef = useRef(null)
 
-  let validEntries = false;
+  let validEntries = false
 
   function handleTextArea(event) {
-    setTextArea(event.target.value.length);
+    setTextArea(event.target.value.length)
   }
 
   function handleInputArea(event) {
-    setInputArea(event.target.value.length);
+    setInputArea(event.target.value.length)
   }
 
   function handleDateArea(event) {
-    setDateArea(event.target.value);
+    setDateArea(event.target.value)
   }
 
   function handleSave() {
-    if (!validEntries) return;
+    if (!validEntries) return
 
     const newProject = {
       title: titleRef.current.value,
       description: descriptionRef.current.value,
       dueDate: dateRef.current.value,
       tasks: [],
-    };
+    }
 
-    setDB(addProject(newProject));
+    setDB(addProject(newProject))
     onSelect(
       <WorkArea
         onSelect={onSelect}
@@ -45,11 +45,11 @@ export default function CreateArea({ onSelect, db, setDB }) {
         db={db}
         setDB={setDB}
       />,
-    );
+    )
   }
 
   if (textArea && inputArea && dateArea) {
-    validEntries = true;
+    validEntries = true
   }
 
   return (
@@ -91,9 +91,9 @@ export default function CreateArea({ onSelect, db, setDB }) {
           undefined={validEntries}
           onClick={handleSave}
         >
-          {validEntries ? "Save Project" : "Invalid Fields"}
+          {validEntries ? "Save Project" : "Invalid Form"}
         </button>
       </div>
     </div>
-  );
+  )
 }

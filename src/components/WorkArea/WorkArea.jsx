@@ -1,38 +1,64 @@
-import css from "./WorkArea.module.css";
-import DefaultArea from "../DefaultArea/DefaultArea";
-import { addTask, removeTask, removeProject } from "../../utils/database";
+import css from "./WorkArea.module.css"
+import DefaultArea from "../DefaultArea/DefaultArea"
+
+import { useRef, useState } from "react"
+import {
+  addTask,
+  removeTask,
+  removeProject,
+  getProjects,
+} from "../../utils/database"
 
 export default function WorkArea({ onSelect, project, db, setDB }) {
+  const addTaskInputRef = useRef("")
+  const [data, setData] = useState(project)
+
   function handleRemoveProject() {
-    setDB(removeProject(project.title));
-    onSelect(<DefaultArea onSelect={onSelect} db={db} setDB={setDB} />);
+    setDB(removeProject(project.title))
+    onSelect(<DefaultArea onSelect={onSelect} db={db} setDB={setDB} />)
   }
+
+  function handleAddTask() {
+    setDB(addTask(project.title, addTaskInputRef.current.value))
+    setData(getProjects().find((p) => p.title === project.title))
+  }
+
+  function handleRemoveTask(task) {
+    setDB(removeTask(project.title, task))
+    setData(getProjects().find((p) => p.title === project.title))
+  }
+
   return (
     <section>
       <div className={css.titleContainer}>
-        <h1>{project.title}</h1>
+        <h1>{data.title}</h1>
         <button onClick={handleRemoveProject}>Delete</button>
       </div>
-      <p className={css.date}>Due: {project.dueDate}</p>
+      <p className={css.date}>Due: {data.dueDate}</p>
       <hr className={css.hr} />
-      <p className={css.description}>{project.description}</p>
+      <p className={css.description}>{data.description}</p>
 
       <hr className={css.hr} />
       <div className={css.taskInput}>
-        <h2>Tasks</h2>
+        <h2>
+          Tasks
+          {data.tasks.length > 0 ? `: ${data.tasks.length}` : undefined}
+        </h2>
         <div className={css.taskInsertion}>
-          <input type="text" required />{" "}
-          <button className={css.addTaskButton}>Add Task</button>
+          <input ref={addTaskInputRef} type="text" required />
+          <button onClick={handleAddTask} className={css.addTaskButton}>
+            Add Task
+          </button>
         </div>
       </div>
-      <ul>
-        {project.tasks.map((task, i) => (
+      <ul className={`${data.tasks.length === 0 ? css.empty : undefined}`}>
+        {data.tasks.map((task, i) => (
           <li key={i}>
             <p>{task}</p>
-            <button>Clear</button>
+            <button onClick={() => handleRemoveTask(task)}>Clear</button>
           </li>
         ))}
       </ul>
     </section>
-  );
+  )
 }

@@ -1,13 +1,14 @@
-import css from "./Menu.module.css";
-import CreateArea from "../CreateArea/CreateArea";
-import WorkArea from "../WorkArea/WorkArea.jsx";
+import css from "./Menu.module.css"
+import CreateArea from "../CreateArea/CreateArea"
+import WorkArea from "../WorkArea/WorkArea.jsx"
 
 export default function Menu({ onSelect, selectedTitle, title, db, setDB }) {
-  function handleSelectProject(project) {
-    selectedTitle(project.title);
+  function changeProject(project) {
+    console.log("Menu", project)
+    selectedTitle(project.title)
     onSelect(
       <WorkArea onSelect={onSelect} project={project} db={db} setDB={setDB} />,
-    );
+    )
   }
 
   return (
@@ -25,11 +26,12 @@ export default function Menu({ onSelect, selectedTitle, title, db, setDB }) {
         <p
           className={`${css.menuLink} ${title === project.title ? css.active : ""}`}
           key={index}
-          onClick={() => handleSelectProject(project)}
+          onClick={() => changeProject(project)}
         >
+          {console.log("menu map", project)}
           {project.title}
         </p>
       ))}
     </aside>
-  );
+  )
 }

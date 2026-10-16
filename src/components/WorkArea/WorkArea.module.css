@@ -30,6 +30,10 @@ section {
     padding: 1rem 3px 1rem 5px;
   }
 
+  & ul.empty {
+    background-color: transparent;
+  }
+
   & p {
     margin: 0;
   }
