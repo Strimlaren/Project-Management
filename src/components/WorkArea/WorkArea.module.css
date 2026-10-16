@@ -1,10 +1,13 @@
-section {
-  padding: 0;
+section.workAreaSection {
+  padding: 1rem 0 0 0;
   align-items: start;
   justify-content: start;
 
   & h1 {
     margin-bottom: 0;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: var(--tetriary);
   }
 
   & .date {
@@ -15,6 +18,8 @@ section {
   & h2 {
     margin: 1rem 0 0.5rem 0;
     color: var(--tetriary);
+    font-size: 1.6rem;
+    text-transform: uppercase;
   }
 
   & .description {

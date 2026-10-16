@@ -28,7 +28,7 @@ export default function WorkArea({ onSelect, project, db, setDB }) {
   }
 
   return (
-    <section>
+    <section className={css.workAreaSection}>
       <div className={css.titleContainer}>
         <h1>{data.title}</h1>
         <button onClick={handleRemoveProject}>Delete</button>
