@@ -21,6 +21,11 @@ function App() {
     setSelectedProject(null)
   }
 
+  function handleDefault() {
+    setShowCreateArea(false)
+    setSelectedProject(null)
+  }
+
   return (
     <main>
       <Menu
@@ -34,14 +39,14 @@ function App() {
       {showCreateArea ? (
         <CreateArea
           onSelect={handleSelectProject}
+          handleDefault={handleDefault}
           db={database}
           setDB={setDatabase}
         />
       ) : selectedProject ? (
         <WorkArea
-          key={selectedProject.title}
           project={selectedProject}
-          onSelect={handleSelectProject}
+          onSelect={handleDefault}
           db={database}
           setDB={setDatabase}
         />

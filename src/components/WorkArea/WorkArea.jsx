@@ -1,5 +1,4 @@
 import css from "./WorkArea.module.css"
-import DefaultArea from "../DefaultArea/DefaultArea"
 
 import { useRef, useState } from "react"
 import {
@@ -15,7 +14,7 @@ export default function WorkArea({ onSelect, project, db, setDB }) {
 
   function handleRemoveProject() {
     setDB(removeProject(project.title))
-    onSelect(<DefaultArea onSelect={onSelect} db={db} setDB={setDB} />)
+    onSelect()
   }
 
   function handleAddTask() {

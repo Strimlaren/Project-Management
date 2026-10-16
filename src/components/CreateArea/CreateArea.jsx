@@ -3,7 +3,7 @@ import css from "./CreateArea.module.css"
 import { useState, useRef } from "react"
 import { addProject } from "../../utils/database"
 
-export default function CreateArea({ onSelect, db, setDB }) {
+export default function CreateArea({ onSelect, handleDefault, db, setDB }) {
   const [textArea, setTextArea] = useState(0)
   const [inputArea, setInputArea] = useState(0)
   const [dateArea, setDateArea] = useState(null)
@@ -70,12 +70,7 @@ export default function CreateArea({ onSelect, db, setDB }) {
         <input ref={dateRef} type="date" />
       </div>
       <div className={css.buttons_div}>
-        <button
-          className={css.cancel_button}
-          onClick={() =>
-            onSelect(<DefaultArea onSelect={onSelect} db={db} setDB={setDB} />)
-          }
-        >
+        <button className={css.cancel_button} onClick={() => handleDefault()}>
           Cancel
         </button>
         <button
