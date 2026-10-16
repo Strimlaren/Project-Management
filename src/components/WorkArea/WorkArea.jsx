@@ -20,6 +20,7 @@ export default function WorkArea({ onSelect, project, db, setDB }) {
   function handleAddTask() {
     setDB(addTask(project.title, addTaskInputRef.current.value))
     setData(getProjects().find((p) => p.title === project.title))
+    addTaskInputRef.current.value = ""
   }
 
   function handleRemoveTask(task) {
