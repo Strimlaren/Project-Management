@@ -1,4 +1,3 @@
-import DefaultArea from "../DefaultArea/DefaultArea"
 import css from "./CreateArea.module.css"
 import { useState, useRef } from "react"
 import { addProject } from "../../utils/database"

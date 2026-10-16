@@ -45,6 +45,7 @@ function App() {
         />
       ) : selectedProject ? (
         <WorkArea
+          key={selectedProject.title}
           project={selectedProject}
           onSelect={handleDefault}
           db={database}
