@@ -12,9 +12,10 @@ export default function WorkArea({ onSelect, project, setDB }) {
   const [data, setData] = useState(project)
   const [taskEntry, setTaskEntry] = useState(0)
 
+  const MAX_TASK = 50
   let isValidTaskEntry = true
 
-  if (taskEntry < 5 || taskEntry > 39) isValidTaskEntry = false
+  if (taskEntry < 5 || taskEntry > MAX_TASK) isValidTaskEntry = false
 
   function handleTaskEntry(event) {
     setTaskEntry(event.target.value.length)
