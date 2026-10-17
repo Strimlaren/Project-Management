@@ -1,11 +1,12 @@
 import css from "./CreateArea.module.css"
 import { useState, useRef } from "react"
-import { addProject } from "../../utils/database"
+import { addProject, getProjects } from "../../utils/database"
 
 export default function CreateArea({ onSelect, handleDefault, setDB }) {
   const [textArea, setTextArea] = useState(0)
   const [inputArea, setInputArea] = useState(0)
   const [dateArea, setDateArea] = useState(null)
+  const [isDuplicate, setIsDuplicate] = useState(false)
 
   const MAX_DESC = 150
   const MAX_INPUT = 21
@@ -30,6 +31,19 @@ export default function CreateArea({ onSelect, handleDefault, setDB }) {
 
   function handleSave() {
     if (!validEntries) return
+
+    const db = getProjects()
+    const result = db.find(
+      (item) =>
+        item.title.toLowerCase() === titleRef.current.value.toLowerCase(),
+    )
+    if (result) {
+      setIsDuplicate(true)
+      setTimeout(() => {
+        setIsDuplicate(false)
+      }, 4000)
+      return
+    }
 
     const newProject = {
       title: titleRef.current.value,
@@ -56,6 +70,9 @@ export default function CreateArea({ onSelect, handleDefault, setDB }) {
           onChange={handleInputArea}
           maxLength={21}
         />
+        <p className={css.duplicateError}>
+          {isDuplicate ? "Duplicate titles found!" : ""}
+        </p>
         <p className={css.counter}>
           {inputArea}/{MAX_INPUT}
         </p>

@@ -48,6 +48,9 @@ function saveProjects(projects) {
 export function addProject(project) {
   const projects = getProjects()
 
+  const result = projects.find((item) => item.title === project.title)
+  if (result) return null
+
   return saveProjects([...projects, project])
 }
 

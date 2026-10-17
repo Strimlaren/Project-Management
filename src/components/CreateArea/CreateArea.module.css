@@ -85,3 +85,10 @@ h6 {
     cursor: default;
   }
 }
+
+.duplicateError {
+  position: absolute;
+  right: 5px;
+  bottom: 8px;
+  color: rgba(255, 0, 0, 0.575);
+}
