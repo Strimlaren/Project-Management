@@ -1,4 +1,3 @@
-import "./App.module.css"
 import { getProjects } from "./utils/database"
 import Menu from "./components/Menu/Menu"
 import WorkArea from "./components/WorkArea/WorkArea"
