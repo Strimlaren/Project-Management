@@ -1,5 +1,4 @@
 import css from "./WorkArea.module.css"
-
 import { useRef, useState } from "react"
 import {
   addTask,
@@ -13,7 +12,9 @@ export default function WorkArea({ onSelect, project, db, setDB }) {
   const [data, setData] = useState(project)
   const [taskEntry, setTaskEntry] = useState(0)
 
-  let validEntry = false
+  let isValidTaskEntry = true
+
+  if (taskEntry < 5 || taskEntry > 39) isValidTaskEntry = false
 
   function handleTaskEntry(event) {
     setTaskEntry(event.target.value.length)
@@ -28,14 +29,13 @@ export default function WorkArea({ onSelect, project, db, setDB }) {
     setDB(addTask(project.title, addTaskInputRef.current.value))
     setData(getProjects().find((p) => p.title === project.title))
     addTaskInputRef.current.value = ""
+    setTaskEntry(0)
   }
 
   function handleRemoveTask(task) {
     setDB(removeTask(project.title, task))
     setData(getProjects().find((p) => p.title === project.title))
   }
-
-  if (taskEntry < 5) validEntry = true
 
   return (
     <section className={css.workAreaSection}>
@@ -61,9 +61,9 @@ export default function WorkArea({ onSelect, project, db, setDB }) {
             required
           />
           <button
-            disabled={validEntry}
+            disabled={!isValidTaskEntry}
             onClick={handleAddTask}
-            className={`${css.addTaskButton} ${validEntry ? css.disabled : undefined}`}
+            className={`${css.addTaskButton} ${!isValidTaskEntry ? css.disabled : ""}`}
           >
             Add Task
           </button>
