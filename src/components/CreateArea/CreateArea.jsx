@@ -1,5 +1,5 @@
 import css from "./CreateArea.module.css"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import { addProject } from "../../utils/database"
 
 export default function CreateArea({ onSelect, handleDefault, setDB }) {
@@ -7,7 +7,8 @@ export default function CreateArea({ onSelect, handleDefault, setDB }) {
   const [inputArea, setInputArea] = useState(0)
   const [dateArea, setDateArea] = useState(null)
 
-  useEffect(() => {}, [inputArea])
+  const MAX_DESC = 150
+  const MAX_INPUT = 21
 
   const titleRef = useRef("")
   const descriptionRef = useRef("")
@@ -55,16 +56,20 @@ export default function CreateArea({ onSelect, handleDefault, setDB }) {
           onChange={handleInputArea}
           maxLength={21}
         />
-        <p className={css.counter}>{inputArea}/21</p>
+        <p className={css.counter}>
+          {inputArea}/{MAX_INPUT}
+        </p>
       </div>
       <div className={css.item}>
         <h6>DESCRIPTION</h6>
         <textarea
           ref={descriptionRef}
-          maxLength={180}
+          maxLength={MAX_DESC}
           onChange={handleTextArea}
         />
-        <p className={css.counter}>{textArea}/180</p>
+        <p className={css.counter}>
+          {textArea}/{MAX_DESC}
+        </p>
       </div>
       <div className={css.item} onChange={handleDateArea}>
         <h6>DUE DATE</h6>

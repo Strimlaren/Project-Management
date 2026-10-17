@@ -2,6 +2,7 @@ section.workAreaSection {
   padding: 1rem 0 0 0;
   align-items: start;
   justify-content: start;
+  max-height: 442px;
 
   & h1 {
     margin-bottom: 0;
@@ -32,7 +33,24 @@ section.workAreaSection {
     background-color: #5555550f;
     border-radius: 5px;
     width: 100%;
+    max-height: 100%;
     padding: 3px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: all 0.4s ease;
+  }
+
+  & ul:hover {
+    scrollbar-color: #555 transparent;
+  }
+
+  & ul::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  & ul:hover::-webkit-scrollbar-thumb {
+    background: #555;
   }
 
   & ul.empty {
