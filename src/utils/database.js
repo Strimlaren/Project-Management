@@ -60,6 +60,9 @@ export function removeProject(title) {
 export function addTask(title, task) {
   const projects = getProjects()
 
+  const result = projects.find((item) => item.title === title)
+  if (result.tasks.includes(task)) return projects
+
   return saveProjects(
     projects.map((project) =>
       project.title === title
