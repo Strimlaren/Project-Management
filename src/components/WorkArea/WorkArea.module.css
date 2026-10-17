@@ -87,6 +87,7 @@ section.workAreaSection {
   display: flex;
   flex-direction: column;
   width: 100%;
+  position: relative;
 }
 
 .titleContainer {
@@ -119,6 +120,7 @@ section.workAreaSection {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
+  position: relative;
 
   & button {
     width: 100px;
@@ -138,4 +140,11 @@ section.workAreaSection {
     cursor: default;
     box-shadow: none;
   }
+}
+
+.duplicateTaskError {
+  position: absolute;
+  right: 110px;
+  bottom: 34px;
+  color: rgba(255, 0, 0, 0.628);
 }

@@ -10,6 +10,7 @@ import {
 export default function WorkArea({ onSelect, project, setDB }) {
   const addTaskInputRef = useRef("")
   const [data, setData] = useState(project)
+  const [isDuplicate, setIsDuplicate] = useState(false)
   const [taskEntry, setTaskEntry] = useState(0)
 
   const MAX_TASK = 50
@@ -27,6 +28,21 @@ export default function WorkArea({ onSelect, project, setDB }) {
   }
 
   function handleAddTask() {
+    const db = getProjects()
+    const result = db.find(
+      (item) => item.title.toLowerCase() === project.title.toLowerCase(),
+    )
+
+    if (result.tasks.includes(addTaskInputRef.current.value)) {
+      setIsDuplicate(true)
+      setTimeout(() => {
+        setIsDuplicate(false)
+      }, 4000)
+      addTaskInputRef.current.value = ""
+      setTaskEntry(0)
+      return
+    }
+
     setDB(addTask(project.title, addTaskInputRef.current.value))
     setData(getProjects().find((p) => p.title === project.title))
     addTaskInputRef.current.value = ""
@@ -61,6 +77,13 @@ export default function WorkArea({ onSelect, project, setDB }) {
             type="text"
             required
           />
+
+          {isDuplicate ? (
+            <p className={css.duplicateTaskError}>Duplicate tasks found!</p>
+          ) : (
+            ""
+          )}
+
           <button
             disabled={!isValidTaskEntry}
             onClick={handleAddTask}
