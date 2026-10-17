@@ -2,7 +2,7 @@ import css from "./CreateArea.module.css"
 import { useState, useRef, useEffect } from "react"
 import { addProject } from "../../utils/database"
 
-export default function CreateArea({ onSelect, handleDefault, db, setDB }) {
+export default function CreateArea({ onSelect, handleDefault, setDB }) {
   const [textArea, setTextArea] = useState(0)
   const [inputArea, setInputArea] = useState(0)
   const [dateArea, setDateArea] = useState(null)

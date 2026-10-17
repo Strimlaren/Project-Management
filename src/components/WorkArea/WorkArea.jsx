@@ -7,7 +7,7 @@ import {
   getProjects,
 } from "../../utils/database"
 
-export default function WorkArea({ onSelect, project, db, setDB }) {
+export default function WorkArea({ onSelect, project, setDB }) {
   const addTaskInputRef = useRef("")
   const [data, setData] = useState(project)
   const [taskEntry, setTaskEntry] = useState(0)
@@ -51,7 +51,7 @@ export default function WorkArea({ onSelect, project, db, setDB }) {
       <div className={css.taskInput}>
         <h2>
           Tasks
-          {data.tasks.length > 0 ? `: ${data.tasks.length}` : undefined}
+          {data.tasks.length > 0 ? `: ${data.tasks.length}` : ""}
         </h2>
         <div className={css.taskInsertion}>
           <input
@@ -69,14 +69,18 @@ export default function WorkArea({ onSelect, project, db, setDB }) {
           </button>
         </div>
       </div>
-      <ul className={`${data.tasks.length === 0 ? css.empty : undefined}`}>
-        {data.tasks.map((task, i) => (
-          <li key={i}>
-            <p>{task}</p>
-            <button onClick={() => handleRemoveTask(task)}>Clear</button>
-          </li>
-        ))}
-      </ul>
+      {data.tasks.length === 0 ? (
+        <p className={css.noTasks}>This project does not yet have any tasks.</p>
+      ) : (
+        <ul className={`${data.tasks.length === 0 ? css.empty : ""}`}>
+          {data.tasks.map((task, i) => (
+            <li key={i}>
+              <p>{task}</p>
+              <button onClick={() => handleRemoveTask(task)}>Clear</button>
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   )
 }
