@@ -1,0 +1,54 @@
+.deleteButton {
+  height: fit-content;
+  background-color: #cb3838;
+  margin-bottom: 0;
+  color: var(--primary);
+  font-weight: 900;
+  /* transition: 0.4s ease; */
+  width: 70px;
+  border: 1px solid #cb3838;
+
+  &:hover {
+    background-color: #f32525;
+    box-shadow: none;
+  }
+}
+
+.confirmButton {
+  position: relative;
+  overflow: hidden;
+  font-weight: 900;
+  width: 70px;
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px dotted #cb3838;
+  z-index: 9;
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: #f32525;
+    animation: shrink 3s linear forwards;
+    transform-origin: left;
+  }
+
+  & span {
+    z-index: 2;
+    position: relative;
+  }
+}
+
+@keyframes shrink {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}

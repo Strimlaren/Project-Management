@@ -97,7 +97,7 @@ section.workAreaSection {
   align-items: center;
   position: relative;
 
-  & button {
+  /* & button {
     height: fit-content;
     background-color: rgba(255, 0, 0, 0.53);
     margin-bottom: 0;
@@ -110,7 +110,7 @@ section.workAreaSection {
   & button:hover {
     background-color: rgba(255, 0, 0, 0.788);
     box-shadow: none;
-  }
+  } */
 }
 
 .hr {
@@ -158,8 +158,6 @@ section.workAreaSection {
   .taskInsertion {
     & button {
       width: 110px;
-    }
-    & input {
     }
   }
 

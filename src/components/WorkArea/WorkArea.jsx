@@ -6,6 +6,7 @@ import {
   removeProject,
   getProjects,
 } from "../../utils/database"
+import DeleteButton from "../DeleteButton/DeleteButton"
 
 export default function WorkArea({ onSelect, project, setDB }) {
   const addTaskInputRef = useRef("")
@@ -58,7 +59,8 @@ export default function WorkArea({ onSelect, project, setDB }) {
     <section className={css.workAreaSection}>
       <div className={css.titleContainer}>
         <h1>{data.title}</h1>
-        <button onClick={handleRemoveProject}>Delete</button>
+        {/* <button onClick={handleRemoveProject}>Delete</button> */}
+        <DeleteButton handlerFunction={handleRemoveProject} />
       </div>
       <p className={css.date}>Due: {data.dueDate}</p>
       <hr className={css.hr} />
