@@ -1,12 +1,9 @@
 .deleteButton {
-  height: fit-content;
+  height: 32px;
+  width: 70px;
   background-color: #cb3838;
-  margin-bottom: 0;
   color: var(--primary);
   font-weight: 900;
-  /* transition: 0.4s ease; */
-  width: 70px;
-  border: 1px solid #cb3838;
 
   &:hover {
     background-color: #f32525;
@@ -15,22 +12,25 @@
 }
 
 .confirmButton {
-  position: relative;
-  overflow: hidden;
-  font-weight: 900;
+  height: 32px;
   width: 70px;
   background-color: transparent;
   color: var(--primary);
-  border: 1px dotted #cb3838;
+  font-weight: 900;
+  position: relative;
+  overflow: hidden;
+  border: 1px dashed #cb3838;
   z-index: 9;
 
   &:hover {
     box-shadow: none;
+    background-color: rgba(255, 0, 0, 0.233);
   }
 
   &::before {
     content: "";
     position: absolute;
+    height: 32px;
     inset: 0;
     z-index: 1;
     background-color: #f32525;
@@ -41,6 +41,7 @@
   & span {
     z-index: 2;
     position: relative;
+    width: 70px;
   }
 }
 
