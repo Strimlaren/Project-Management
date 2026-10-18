@@ -95,11 +95,15 @@ section.workAreaSection {
   justify-content: space-between;
   width: 100%;
   align-items: center;
+  position: relative;
 
   & button {
     height: fit-content;
     background-color: rgba(255, 0, 0, 0.53);
     margin-bottom: 0;
+    position: absolute;
+    right: 0;
+    top: 2px;
     transition: 0.4s ease;
   }
 
