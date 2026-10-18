@@ -26,34 +26,37 @@ function App() {
   }
 
   return (
-    <main>
-      <Menu
-        onSelect={handleSelectProject}
-        onCreate={handleCreateProject}
-        selectedProject={selectedProject}
-        db={database}
-        setDB={setDatabase}
-      />
-
-      {showCreateArea ? (
-        <CreateArea
+    <>
+      <main>
+        <Menu
           onSelect={handleSelectProject}
-          handleDefault={handleDefault}
+          onCreate={handleCreateProject}
+          selectedProject={selectedProject}
           db={database}
           setDB={setDatabase}
         />
-      ) : selectedProject ? (
-        <WorkArea
-          key={selectedProject.title}
-          project={selectedProject}
-          onSelect={handleDefault}
-          db={database}
-          setDB={setDatabase}
-        />
-      ) : (
-        <DefaultArea handleCreateProject={handleCreateProject} />
-      )}
-    </main>
+
+        {showCreateArea ? (
+          <CreateArea
+            onSelect={handleSelectProject}
+            handleDefault={handleDefault}
+            db={database}
+            setDB={setDatabase}
+          />
+        ) : selectedProject ? (
+          <WorkArea
+            key={selectedProject.title}
+            project={selectedProject}
+            onSelect={handleDefault}
+            db={database}
+            setDB={setDatabase}
+          />
+        ) : (
+          <DefaultArea handleCreateProject={handleCreateProject} />
+        )}
+        {/* <p className="copyright">2026 &copy; Strimlaren</p> */}
+      </main>
+    </>
   )
 }
 

@@ -42,6 +42,8 @@ export default function CreateArea({ onSelect, handleDefault, setDB }) {
       setTimeout(() => {
         setIsDuplicate(false)
       }, 4000)
+      titleRef.current.value = ""
+      setTextArea(0)
       return
     }
 
