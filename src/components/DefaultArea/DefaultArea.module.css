@@ -17,3 +17,22 @@
     color: var(--tetriary);
   }
 }
+
+@media (max-width: 400px) {
+  .container {
+    margin-top: 6rem;
+
+    & img {
+      width: 7rem;
+      height: 7rem;
+    }
+
+    & h1 {
+      font-size: 2rem;
+    }
+
+    & p {
+      font-size: 1rem;
+    }
+  }
+}

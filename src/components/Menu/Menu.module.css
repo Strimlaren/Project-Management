@@ -8,6 +8,7 @@ aside {
   padding: 1rem;
   margin-right: 2rem;
   flex: 0 0 30%;
+  top: 0.5rem;
 
   & h2 {
     margin-bottom: 1rem;
@@ -42,5 +43,31 @@ hr {
   &.active {
     background-color: #5555550f;
     color: rgb(136, 136, 136);
+  }
+}
+
+@media (max-width: 400px) {
+  aside {
+    width: 100%;
+    max-height: fit-content;
+    padding: 0.4rem;
+    position: sticky;
+    backdrop-filter: blur(8px);
+    z-index: 10;
+
+    & h2 {
+      text-align: left;
+      margin: 0.6rem 0 0.6rem 4rem;
+    }
+
+    & button {
+      position: absolute;
+      top: 12px;
+      right: 4rem;
+    }
+  }
+
+  hr {
+    margin: 0 1rem 0.5rem 1rem;
   }
 }
