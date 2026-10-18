@@ -150,7 +150,7 @@ section.workAreaSection {
   font-weight: 900;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .taskInsertion {
     & button {
       width: 110px;
