@@ -24,7 +24,7 @@ const initialDatabase = [
     ],
   },
   {
-    title: "Example with many tasks",
+    title: "Many tasks example",
     description:
       "Intended to demonstrate how the app behaves when task list grows.",
     dueDate: "2028-02-31",
