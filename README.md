@@ -8,3 +8,5 @@ Simple project management app.
 - Data is saved locally on browser localStorage
 
 Made with React
+
+Live Demo: https://project-managerer.netlify.app/
